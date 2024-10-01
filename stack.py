@@ -16,7 +16,7 @@ class Stack:
         """
         # TODO: Replace 'pass' with your code
 
-        pass
+        self._data.insert(0,item)
 
     def peek(self) -> int:
         """
@@ -27,19 +27,26 @@ class Stack:
         """
 
         # TODO: Replace 'pass' with your code
-        pass
+        if not self._data:
+            raise Exception("The stack is empty")  # Raise an exception
+        
+            
+        return self._data[0]
 
     def is_empty(self) -> bool:
         """Return True if the stack is empty"""
 
         # TODO: Replace 'pass' with your code
-        pass
+        if not self._data:
+            return True
+        else:
+            return False
 
     def size(self) -> int:
         """Return the size of the stack"""
 
         # TODO: Replace 'pass' with your code
-        pass
+        return len(self._data)
 
     def pop(self) -> int:
         """
@@ -51,7 +58,10 @@ class Stack:
         """
 
         # TODO: Replace 'pass' with your code
-        pass
+        if not self._data:
+             raise Exception("The stack is empty")  # Raise an exception
+       
+        return self._data.pop()
 
 
 if __name__ == "__main__":
@@ -71,3 +81,4 @@ if __name__ == "__main__":
     print("Pop from top: ", s.pop())
     print("Size is: ", s.size())
     print("Is empty? ", s.is_empty())
+    

@@ -1,11 +1,3 @@
-"""
-Queue may be implemented with Lists just as Stacks. But deque are preferred
-because they allowed optimized accessing/deleting from both ends.
-
-Deleting from the front of a list is O(n) as all other elements need to be shifted
-
-Also, with deque, we can implement double-ended Queues.
-"""
 
 from collections import deque
 
@@ -16,24 +8,32 @@ class Queue:
 
     def is_empty(self):
         # TODO: Replace 'pass' with your code
-        pass
+        if not self._data:
+            return True
+        else:
+            return False
 
     @property
     def size(self):
         # TODO: Replace 'pass' with your code
-        pass
+        return len(self._data)
 
     def enqueue(self, item):
         # TODO: Replace 'pass' with your code
-        pass
+         self._data.append(item)
 
     def peek(self):
-        # TODO: Replace 'pass' with your code
-        pass
-
+        """Return the item at the front of the queue without removing it. Raise an exception if empty."""
+        if not self._data:
+            raise Exception("The queue is empty")
+        return self._data[0]
+    
     def dequeue(self):
         # TODO: Replace 'pass' with your code
-        pass
+     if not self._data:
+         raise Exception("The queue is empty")  # Raise an exception
+       
+     return self._data.popleft()
 
     def __str__(self) -> str:
         return str(self._data)
@@ -43,6 +43,9 @@ if __name__ == "__main__":
     q = Queue()
     q.enqueue(0)
     q.enqueue(1)
+    q.enqueue(2)
+    q.enqueue(3)
+    q.enqueue(4)
     print(q)
     print("Size of Queue: ", q.size)
     print("Peek the Queue: ", q.peek())
@@ -51,4 +54,8 @@ if __name__ == "__main__":
     print("Size of Queue: ", q.size)
     print("Pop from Queue: ", q.dequeue())
     print("Size of Queue: ", q.size)
-    print("Peek the Queue: ", q.peek())
+    try:
+        print("Peek the Queue: ", q.peek())  
+    except Exception as e:
+        print(e)  # Output: The queue is empty
+
